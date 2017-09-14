@@ -399,77 +399,8 @@
 					}
 				}
 			}
-		},
-		{
-			"name": "[variables('deploySqlAlwaysOn')]",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2015-01-01",
-			"dependsOn": [
-				"[resourceId('Microsoft.Compute/virtualMachines',concat(variables('sqlNamePrefix'),'0'))]",
-				"[resourceId('Microsoft.Compute/virtualMachines',concat(variables('sqlNamePrefix'),'1'))]",
-				"[variables('deploySqlWitnessShareId')]"
-			],
-			"properties": {
-				"mode": "Incremental",
-				"templateLink": {
-					"uri": "[variables('deploySqlAlwaysOnTemplateUrl')]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"sqlNamePrefix": {
-						"value": "[variables('sqlNamePrefix')]"
-					},
-					"domainName": {
-						"value": "[parameters('domainName')]"
-					},
-					"namePrefix": {
-						"value": "[parameters('namePrefix')]"
-					},
-					"sharePath": {
-						"value": "[variables('sqlWitnessSharePath')]"
-					},
-					"sqlWitnessVMName": {
-						"value": "[variables('sqlWitnessVMName')]"
-					},
-					"sqlLBName": {
-						"value": "[variables('sqlLBName')]"
-					},
-					"sqlLBIPAddress": {
-						"value": "[parameters('sqlLBIPAddress')]"
-					},
-					"dnsServerName": {
-						"value": "[parameters('dnsServerName')]"
-					},
-					"sqlServerServiceAccountUserName": {
-						"value": "[parameters('sqlServerServiceAccountUserName')]"
-					},
-					"sqlServerServiceAccountPassword": {
-						"value": "[parameters('sqlServerServiceAccountPassword')]"
-					},
-					"adminUsername": {
-						"value": "[parameters('adminUsername')]"
-					},
-					"adminPassword": {
-						"value": "[parameters('adminPassword')]"
-					},
-					"_artifactsLocation": {
-						"value": "[parameters('_artifactsLocation')]"
-					},
-					"_artifactsLocationSasToken": {
-						"value": "[parameters('_artifactsLocationSasToken')]"
-					},
-					"sqlAlwaysOnEndpointName": {
-						"value": "[variables('sqlAOEPName')]"
-					},
-					"sqlAlwaysOnAvailabilityGroupName1": {
-						"value": "[variables('sqlAOAGName1')]"
-					},
-					"sqlAlwaysOnAvailabilityGroupListenerName1": {
-						"value": "[variables('sqlAOListener1')]"
-					}
-				}
-			}
 		}
+
 	],
 	"outputs": {}
 }
